@@ -1,22 +1,27 @@
 class OrderData:
 
     def __init__(self):
-        # stores a list of customers (instances of the Customer class)
-        # stores a list of orders (instances of the Order class)
-        pass
+        self.all_customers = []
+        self.all_orders = []
 
     def add_customer(self, customer):
-        # adds an instance of the Customer class to the list in the __init__ method
-        pass
+        self.all_customers.append(customer)
     
     def get_customer(self, customer_id):
-        # returns relevant customer (if exists) from the list in the __init__ method
-        pass
+        if len(customer_id) != 8:
+            raise Exception("Customer ID does not match required length!")
+        for customer in self.all_customers:
+            if customer.customer_id == customer_id:
+                return customer
+        raise Exception("Customer doesn't exist!")
 
     def add_order(self, order):
-        # adds an instance of the Order class to the list in the __init__ method 
-        pass
+        self.all_orders.append(order)
     
     def get_order(self, order_id):
-        # returns relevant order (if exists) from the list in the __init__ method
-        pass
+        if len(order_id) != 12:
+            raise Exception("Order ID does not match required length!")
+        for order in self.all_orders:
+            if order.order_id == order_id:
+                return order
+        raise Exception("Order doesn't exist!")

@@ -1,3 +1,8 @@
+from lib.customer import *
+from lib.menu import *
+from lib.customer import *
+from lib.order_data import *
+
 class TakeawayOrderer:
 
     def __init__(self, menu_csv, animals):
@@ -19,6 +24,33 @@ class TakeawayOrderer:
     def add_customer(self, name, allergens, address, phone_number):
         # creates an instance of the Customer class and calls the add_customer(customer) method in the OrderData class
         # returns the customer_id
+        pass
+
+    def view_past_orders(self, customer_id):
+        # gets the customers past order ids and then calls the get_order(order_id) method in the OrderData class for each order id
+        # returns all the orders in a formatted message with full details
+        pass
+
+    def show_customer_details(self, customer_id):
+        # calls the get_all_details() method in the Customer class
+        # returns them all in a formatted list for reading
+        pass
+
+    def update_customer_details(self, customer_id, name="", address="", phone_number=""):
+        # calls the update_customer_details() method in the customer class with the details
+        pass
+    
+    def get_customer_allergens(self, customer_id):
+        # calls the get_allergens() method in the Customer class
+        # returns them in a list
+        pass
+
+    def add_customer_allergens(self, customer_id, allergens):
+        # calls the add_allergens(allergens) method in the Customer class to add the allergens
+        pass
+
+    def remove_customer_allergens(self, customer_id, allergens):
+        # calls the remove_allergens(allergens) method in the Customer class to remove the allergens
         pass
 
     def add_dish_to_basket(self, customer_id, dish_title):

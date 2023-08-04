@@ -47,6 +47,33 @@ class TakeawayOrderer:
         # returns the customer_id
         pass
 
+    def view_past_orders(self, customer_id):
+        # gets the customers past order ids and then calls the get_order(order_id) method in the OrderData class for each order id
+        # returns all the orders in a formatted message with full details
+        pass
+    
+    def show_customer_details(self, customer_id):
+        # calls the get_all_details() method in the Customer class
+        # returns them all in a formatted list for reading
+        pass
+
+    def update_customer_details(self, customer_id, name="", address="", phone_number=""):
+        # calls the update_customer_details() method in the customer class with the details
+        pass
+    
+    def get_customer_allergens(self, customer_id):
+        # calls the get_allergens() method in the Customer class
+        # returns them in a list
+        pass
+
+    def add_customer_allergens(self, customer_id, allergens):
+        # calls the add_allergens(allergens) method in the Customer class to add the allergens
+        pass
+
+    def remove_customer_allergens(self, customer_id, allergens):
+        # calls the remove_allergens(allergens) method in the Customer class to remove the allergens
+        pass
+
     def add_dish_to_basket(self, customer_id, dish_title):
         # gets the dish from the Menu class from the get_dish(dish_title) method
         # calls the add_dish(dish) method in the Customer class and adds a dish to the customer's basket
@@ -167,15 +194,31 @@ class Customer:
         # - stores a list of the dishes in the customer's basket (instances of the Dish class)
         # - stores a list of the customer's past order ids
         pass
+    
+    def get_all_details(self):
+        # returns all the customers details in a dictionary
+        pass
 
-    def get_id(self):
-        # returns the customer's unique id
+    def update_customer_details(self, name="", address="", phone_number=""):
+        # updates the customer's name, address and/or phone number
         pass
 
     def get_allergens(self):
         # returns the customer's allergens
         pass
+
+    def add_allergens(self, allergens):
+        # adds new allergens to the list in the __init__ method
+        pass
+
+    def remove_allergens(self, allergens):
+        # removes allergens from the list in the __init__ method
+        pass
     
+    def get_id(self):
+        # returns the customer's unique id
+        pass
+
     def add_dish(self, dish):
         # adds the dish (an instance of the class Dish) to the list of stored dishes in the __init__ method (the customer's basket)
         pass
@@ -192,6 +235,10 @@ class Customer:
         # empties the list of the dishes in the customer's basket
         # adds the order id to the customer's past order ids in the __init__ method
         # returns all the contents of the customer's baskets in a list
+        pass
+    
+    def get_order_ids(self):
+        # returns the customer's past order ids
         pass
 
     def get_phone_number(self):
