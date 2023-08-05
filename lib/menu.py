@@ -30,14 +30,14 @@ class Menu:
             highest_num -= 1
         return most_popular_dishes
             
-    def get_formatted_menu(self):
+    def get_listed_menu(self):
         customer_favourites = self.get_most_popular_dishes()
-        formatted_favourites = [f"{dish.title}     {dish.calories}cal     £{dish.price}" for dish in customer_favourites]
+        listed_favourites = [[dish.title, f"{dish.calories}cal", f"£{dish.price}"] for dish in customer_favourites]
         selected_dishes =  [dish for dish in self.all_dishes if dish not in customer_favourites]
-        formatted_selected = [f"{dish.title}     {dish.calories}cal     £{dish.price}" for dish in selected_dishes]
-        favourites_title = [("-" * 20) + "CUSTOMER FAVOURITES" + ("-" * 20)]
-        selected_title = [("-" * 22) + "Selected Dishes" + ("-" * 22)]
-        return favourites_title + formatted_favourites + [""] + selected_title + formatted_selected
+        listed_selected = [[dish.title, f"{dish.calories}cal", f"£{dish.price}"] for dish in selected_dishes]
+        favourites_title = [[1, "CUSTOMER FAVOURITES", 1]]
+        selected_title = [[1, "Selected Dishes", 1]]
+        return favourites_title + listed_favourites + [[1, 1, 1]] + selected_title + listed_selected
 
     def amend_dish_data(self, allergens, dish_names):
         for dish_name in dish_names:

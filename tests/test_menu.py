@@ -69,19 +69,19 @@ def test_menu_get_formatted_menu():
     menu = Menu()
     menu.add(dish1), menu.add(dish2), menu.add(dish3), menu.add(dish4), menu.add(dish5)
     menu.add(dish6), menu.add(dish7), menu.add(dish8), menu.add(dish9), menu.add(dish10)
-    assert menu.get_formatted_menu() == [("-" * 20) + "CUSTOMER FAVOURITES" + ("-" * 20),
-                                         "Frog Fritters     600cal     £7.49",
-                                         "Gerbil Gelato     630cal     £7.49",
-                                         "Giraffe Ginger Snaps     580cal     £6.99",
-                                         "Hornet Hummus     460cal     £7.99",
-                                         "Zebra Ziti     540cal     £8.99",
-                                         "",
-                                         ("-" * 22) + "Selected Dishes" + ("-" * 22),
-                                         "Badger Burrito     650cal     £8.99",
-                                         "Tandoori Tiger     590cal     £9.99",
-                                         "Flamingo Flapjacks     560cal     £6.99",
-                                         "Gnat Gnocchi     600cal     £8.49",
-                                         "Dragonfly Drumsticks     570cal     £8.49"]
+    assert menu.get_listed_menu() == [[1, "CUSTOMER FAVOURITES", 1],
+                                        ["Frog Fritters", "600cal", "£7.49"],
+                                        ["Gerbil Gelato", "630cal", "£7.49"],
+                                        ["Giraffe Ginger Snaps", "580cal", "£6.99"],
+                                        ["Hornet Hummus", "460cal", "£7.99"],
+                                        ["Zebra Ziti", "540cal", "£8.99"],
+                                        [1, 1, 1],
+                                        [1, "Selected Dishes", 1],
+                                        ["Badger Burrito", "650cal", "£8.99"],
+                                        ["Tandoori Tiger", "590cal", "£9.99"],
+                                        ["Flamingo Flapjacks", "560cal", "£6.99"],
+                                        ["Gnat Gnocchi", "600cal", "£8.49"],
+                                        ["Dragonfly Drumsticks", "570cal", "£8.49"]]
 
 from lib.dish import *
 

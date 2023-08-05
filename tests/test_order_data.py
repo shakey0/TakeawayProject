@@ -2,12 +2,13 @@ from lib.order_data import *
 from unittest.mock import Mock
 import pytest
 
-def test_order_data_get_customer():
+def test_order_data_get_all_customers_and_get_customer():
     customer1, customer2, customer3 = Mock(), Mock(), Mock()
     customer1.customer_id, customer2.customer_id, customer3.customer_id = "12121212", "13131313", "14141414"
     order_data = OrderData()
     order_data.add_customer(customer1), order_data.add_customer(customer2), order_data.add_customer(customer3)
     assert order_data.get_customer("12121212") == customer1
+    assert order_data.get_all_customers() == [customer1, customer2, customer3]
     with pytest.raises(Exception) as e:
         order_data.get_customer("1313131")
     assert str(e.value) == "Customer ID does not match required length!"
@@ -17,6 +18,7 @@ def test_order_data_get_customer():
     customer4 = Mock()
     customer4.customer_id = "15151515"
     order_data.add_customer(customer4)
+    assert order_data.get_all_customers() == [customer1, customer2, customer3, customer4]
     assert order_data.get_customer("15151515") == customer4
 
 def test_order_data_get_order():

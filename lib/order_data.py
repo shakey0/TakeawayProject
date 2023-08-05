@@ -4,6 +4,9 @@ class OrderData:
         self.all_customers = []
         self.all_orders = []
 
+    def get_all_customers(self):
+        return self.all_customers
+
     def add_customer(self, customer):
         self.all_customers.append(customer)
     
