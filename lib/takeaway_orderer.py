@@ -6,6 +6,7 @@ from lib.order_data import *
 from lib.order import *
 import os
 from datetime import datetime
+import random
 from list_of_animals import *
 
 class TakeawayOrderer:
