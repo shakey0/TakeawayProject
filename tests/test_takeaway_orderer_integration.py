@@ -209,8 +209,10 @@ def test_takeaway_orderer_confirm_order_and_view_past_orders():
                                                     'Vulture', 'Squirrel', 'Mongoose', 'Scorpion', 'Badger',
                                                     'Oyster', 'Okapi', 'Termite', 'Swan', 'Shark'])
     customer1_id = takeaway_orderer.add_customer("Lizzie", ["jk", "er"], "6 Blue Street", "+447111000111")
+    assert takeaway_orderer.view_past_orders(customer1_id) == []
     assert takeaway_orderer.add_dish_to_basket(customer1_id, "Pig Paella") == "Pig Paella was added to your basket."
     assert takeaway_orderer.add_dish_to_basket(customer1_id, "Badger Burrito (Contains er!)") == "Badger Burrito (Contains er!) was added to your basket."
+    assert takeaway_orderer.view_past_orders(customer1_id) == []
     order1_id, date, time = takeaway_orderer.confirm_order(customer1_id)
     assert takeaway_orderer.menu.all_dishes[3].get_times_ordered() == 1
     assert takeaway_orderer.menu.all_dishes[3].get_allergens() == {}
