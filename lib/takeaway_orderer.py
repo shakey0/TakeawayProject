@@ -67,22 +67,26 @@ class TakeawayOrderer:
         return self.menu.get_listed_menu()
     
     # supplementary method for the add_customer and confirm_order methods
-    def make_id(self, length):
+    def make_id(self, length, current_list):
         while True:
             exists = False
             generated_number = str(random.randint(1, length))
             while len(generated_number) < len(str(length)):
                 generated_number = "0" + generated_number
-            for customer in self.order_data.get_all_customers():
-                if customer.customer_id == generated_number:
-                    exists = True
+            for item in current_list:
+                if len(str(length)) == 8:
+                    if item.customer_id == generated_number:
+                        exists = True
+                elif len(str(length)) == 12:
+                    if item.order_id == generated_number:
+                        exists = True
             if not exists:
                 return generated_number
     
     # EXTERNAL method - gives the customer information to self.order_data (an instance of the OrderData
     # class) which then creates and stores it in an instance of the Customer class
     def add_customer(self, name, allergens, address, phone_number):
-        unique_customer_id = self.make_id(99999999)
+        unique_customer_id = self.make_id(99999999, self.order_data.get_all_customers())
         self.order_data.add_customer(Customer(unique_customer_id, name, allergens, address, phone_number))
         return unique_customer_id
 
@@ -175,7 +179,7 @@ class TakeawayOrderer:
 
     # EXTERNAL method
     def confirm_order(self, customer_id):
-        unique_order_id = self.make_id(999999999999)  # creates order id
+        unique_order_id = self.make_id(999999999999, self.order_data.get_all_orders())  # creates order id
         # gives order id to instance of Customer for storing AND gets instances of Dish from Customer
         dishes_ordered = self.order_data.get_customer(customer_id).confirm_order(unique_order_id)
         dish_names = [dish.title for dish in dishes_ordered]  # converts instances of Dish to titles
