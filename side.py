@@ -37,13 +37,18 @@ def get_name():
             return name
         print("\nName can only include letters and be no longer than 30 characters.")
 
-def get_allergens():
-    allergens = []
-    count = 0
+def print_allergens_list(allergens, space=True):
+    current_allergens = ", ".join(allergens) if len(allergens) > 0 else "None"
+    if space:
+        print("")
+    print(f"ALLERGENS: {current_allergens}")
+
+def get_allergens(allergens=[]):
     print("\nAllergens in this world are 2 consecutive letters of the alphabet."
           "\nFor example, 'rq', 're', 'tt', 'oa', etc.")
     while True:
-        more = "more " if count > 0 else ""
+        print_allergens_list(allergens)
+        more = "more " if len(allergens) > 0 else ""
         has_allergens = input(f"\nDo you have any {more}allergens?"
                             "\nY for Yes or N for No: ")
         if has_allergens.lower() == "n":
@@ -56,7 +61,6 @@ def get_allergens():
             allergen = input("\nType your allergen here: ")
             if len(allergen) == 2 and allergen.isalpha():
                 allergens.append(allergen)
-                count += 1
                 break
             print(f"\nNobody can be allergic to {allergen}!")
             breaker += 1
@@ -84,10 +88,10 @@ def get_customer_details():
     phone_number = get_phone_number()
     return name, allergens, address, phone_number
 
-def get_choice(choices, other):
+def get_choice(number_choices, letter_choices):
     while True:
-        choice = input(f"\nChoose from the options above: ")
-        if choice in choices or choice.lower() in other:
+        choice = input(f"\nChoose from the options above:\n")
+        if choice in number_choices or choice.lower() in letter_choices:
             return choice
         print("\nInvalid command!")
 
@@ -97,14 +101,14 @@ def place_order(customer_id):
         f"\nDATE: {date}     TIME: {time}     ORDER NO: {order_number}"
         f"\nIt will be delivered to {takeaway_orderer.show_customer_details(customer_id)['Address']}."
         "\nThank you for your order!")
-    input("\nPress Enter to continue.")
+    input("\nPress Enter to continue.\n")
 
 def option5(customer_id):
     basket = takeaway_orderer.view_basket(customer_id)
     print("\nYOUR BASKET")
     if len(basket) == 0:
         print("Your basket is empty.")
-        input("\nPress Enter to go back.")
+        input("\nPress Enter to go back.\n")
         return True
     print(format_list(basket))
     while True:
@@ -120,13 +124,13 @@ def option5(customer_id):
             print("\nInvalid command!")
 
 def option1(customer_id):
-    menu = takeaway_orderer.show_menu_with_allergens(customer_id)
-    print(format_list(menu))
-    avoid_list = ["CUSTOMER FAVOURITES", "Selected Dishes", 1]
-    listed_items = [line[0] for line in menu if line[0] not in avoid_list]
-    print("\nTo add items press the item number + Enter."
-            "\nPress B + Enter to view your basket.")
     while True:
+        menu = takeaway_orderer.show_menu_with_allergens(customer_id)
+        print(format_list(menu))
+        avoid_list = ["CUSTOMER FAVOURITES", "Selected Dishes", 1]
+        listed_items = [line[0] for line in menu if line[0] not in avoid_list]
+        print("\nTo add items press the item number + Enter."
+                "\nPress B + Enter to view your basket.")
         option = get_choice([str(num) for num in range(1, 16)], ["q", "b"])
         if option.lower() == "q":
             break
@@ -150,14 +154,15 @@ def option2(customer_id):
         print(f"\nORDER NO: {order['Order No.']}"
             f"\nCONTENTS: {', '.join(order['Dishes'])}"
             f"\nDATE: {order['Date']}     TIME: {order['Time']}")
-    input("\nPress Enter to go back.")
+    input("\nPress Enter to go back.\n")
 
 def print_customer_details(details):
     print(f"\nCUSTOMER ID: {details['ID Number']}"
         f"\nName: {details['Name']}"
-        f"\nAllergens: {', '.join(details['Allergens'])}"
         f"\nAddress: {details['Address']}"
         f"\nPhone Number: {details['Phone Number']}")
+    allergens = takeaway_orderer.get_customer_allergens(customer_id)
+    print_allergens_list(allergens, space=False)
 
 def remove_allergens(customer_id):
     count = 0
@@ -176,22 +181,22 @@ def remove_allergens(customer_id):
 def option4(customer_id):
     while True:
         allergens = takeaway_orderer.get_customer_allergens(customer_id)
-        print(f"\nYour current allergens: {', '.join(allergens)}")
+        print_allergens_list(allergens)
         print("\nA = Add Allergen(s)\nR = Remove Allergen(s)\nB = Back to Previous Section")
         choices = ["a", "r", "b"]
         option = get_choice([], choices)
         if option == "a":
-            new_allergens = get_allergens()
+            new_allergens = get_allergens(allergens)
             if len(new_allergens) > 0:
                 takeaway_orderer.add_customer_allergens(customer_id, new_allergens)
-                print("\nYour allergens were updated.")
+                print("\nYour allergens were updated.\n")
         elif option == "r":
             if len(allergens) == 0:
                 print("\nYou don't have any allergens recorded!")
-                input("\nPress Enter to continue.")
+                input("\nPress Enter to continue.\n")
                 continue
             remove_allergens(customer_id)
-            input("\nPress Enter to continue.")
+            input("\nPress Enter to continue.\n")
         elif option == "b":
             break
 
@@ -205,17 +210,19 @@ def option3(customer_id):
         if option == "n":
             name = get_name()
             takeaway_orderer.update_customer_details(customer_id, name=name)
+            input("\nPress Enter to continue.\n")
         elif option == "x":
             option4(customer_id)
         elif option == "a":
             address = get_address()
             takeaway_orderer.update_customer_details(customer_id, address=address)
+            input("\nPress Enter to continue.\n")
         elif option == "p":
             phone_number = get_phone_number()
             takeaway_orderer.update_customer_details(customer_id, phone_number=phone_number)
+            input("\nPress Enter to continue.\n")
         else:
             break
-        input("\nPress Enter to continue.")
 
 def while_logged_in(customer_id):
     while True:
@@ -240,7 +247,7 @@ def while_logged_in(customer_id):
 
 takeaway_orderer = TakeawayOrderer("menu.csv", list_of_animals)
 print(format_list(takeaway_orderer.show_menu()))
-input("\nPress Enter to continue.")
+input("\nPress Enter to continue.\n")
 name, allergens, address, phone_number = get_customer_details()
 customer_id = takeaway_orderer.add_customer(name, allergens, address, phone_number)
 print(f"\nYour customer ID is: {customer_id}")
