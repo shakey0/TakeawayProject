@@ -13,7 +13,8 @@ Upon running the app, 50 animals are chosen from the animal list in [list_of_ani
 
 <p align="center">
     <img alt="Menu example 1" src="assets/menu_example_1.png" width="45%"/>
-    <img alt="Menu example 2" src="assets/menu_example_2.png" width="45%" style="margin-left: 100px;"/>
+    <span style="display: inline-block; width: 100px;"></span>
+    <img alt="Menu example 2" src="assets/menu_example_2.png" width="45%"/>
 </p>
 
 Next, the user enters their details, essentially creating some kind of account.
