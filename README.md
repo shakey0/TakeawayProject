@@ -84,5 +84,5 @@ pytest
 
 Start the app:
 ```bash
-python app.py
+python main.py
 ```
