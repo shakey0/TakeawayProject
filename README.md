@@ -1,7 +1,7 @@
 # Takeaway Orderer Project
 
 ## Introduction
-This is a project that I really went nuts on and did so many things with. The project has many features and parts to it. See Part 1 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#1-describe-the-problem) for the initial requirements of which I went far beyond. Part 2 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#2-design-the-class-system) shows my planning of the class system.
+This is a project that I really went nuts on and did so many things with. It was at the end of week 4 of the Makers Academy bootcamp. The project has many features and parts to it. See Part 1 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#1-describe-the-problem) for the initial requirements of which I went far beyond. Part 2 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#2-design-the-class-system) shows my planning of the class system.
 
 ## Features
 
@@ -58,6 +58,10 @@ One more thing I've included in this app is **Customer Favourites**.
 <p align="center">
     <img alt="Customer favourites example" src="assets/customer_favourites_example.png" width="60%"/>
 </p>
+
+## Testing
+
+This is a test-driven project. I have used Mocks to test the classes individually.
 
 ## Installation & Setup
 
