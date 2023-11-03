@@ -13,7 +13,7 @@ Upon running the app, 50 animals are chosen from the animal list in [list_of_ani
 
 <p align="center">
     <img alt="Menu example 1" src="assets/menu_example_1.png" width="45%"/>
-    <span style="display: inline-block; width: 100px;"></span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <img alt="Menu example 2" src="assets/menu_example_2.png" width="45%"/>
 </p>
 
