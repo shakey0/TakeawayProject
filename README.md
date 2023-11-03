@@ -1,7 +1,7 @@
 # Takeaway Orderer Project
 
 ## Introduction
-This is a project that I really went nuts on and did so many things with. The project has many features and parts to it. See Part 1 in [recipe.md](recipe.md) for the initial requirements of which I went far beyond. Part 2 in [recipe.md](recipe.md) shows my planning of the class system.
+This is a project that I really went nuts on and did so many things with. The project has many features and parts to it. See Part 1 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#1-describe-the-problem) for the initial requirements of which I went far beyond. Part 2 in [recipe.md](https://github.com/shakey0/TakeawayProject/blob/main/recipe.md#2-design-the-class-system) shows my planning of the class system.
 
 ## Features
 
@@ -13,9 +13,8 @@ Upon running the app, 50 animals are chosen from the animal list in [list_of_ani
 
 <p align="center">
     <img alt="Menu example 1" src="assets/menu_example_1.png" width="45%"/>
-    <img alt="Menu example 2" src="assets/menu_example_2.png" width="45%" style="margin-left: 20px;"/>
+    <img alt="Menu example 2" src="assets/menu_example_2.png" width="45%" style="margin-left: 100px;"/>
 </p>
-
 
 Next, the user enters their details, essentially creating some kind of account.
 - name, address, **allergens**, phone number
@@ -27,10 +26,12 @@ Next, the user enters their details, essentially creating some kind of account.
     - (If you want to see the code for this, look at the 'add_allergens_to_food_titles' method in [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L94) .)
     - Below is an example of how the allergen warning messages are added.
 
-<img alt="Allergens example" src="assets/allergens_example.png" width="60%"/>
+<p align="center">
+    <img alt="Allergens example" src="assets/allergens_example.png" width="60%"/>
+</p>
 
 Once the user has entered their details, the main menu will be shown. This menu has 6 options:
-1. **See Menu & Order** (Upon pressing '1' + 'Enter' the menu with any allergens are displayed. The user can then add dished to their basket from here. <em>To go back to the main menu from here press 'Q' + 'Enter'.</em>)
+1. **See Menu & Order** (Upon pressing '1' + 'Enter' the menu with any allergens is displayed. The user can then add dishes to their basket from here. <em>To go back to the main menu from here press 'Q' + 'Enter'.</em>)
 2. **View Past Orders** (Upon pressing '2' + 'Enter' the user's pasts orders are shown.)
 3. **Your Details** (Upon pressing '3' + 'Enter' the user's details are shown. The user can then amend any of their details.)
 4. **Review Allergens** (Upon pressing '4' + 'Enter' the user's allergens are shown. The user can then remove or add allergens. Next time the menu is shown, these changes are reflected.)
@@ -39,18 +40,24 @@ Once the user has entered their details, the main menu will be shown. This menu 
 
 Below is an example of when a customer places an order and the message they get confirming their order.
 
-<img alt="Place order example" src="assets/place_order_example.png" width="60%"/>
+<p align="center">
+    <img alt="Place order example" src="assets/place_order_example.png" width="60%"/>
+</p>
 
-Below is an example of option 2 'View Past Orders'. You can see the **datetime module** being used here when a user places an order. A **random order number** is generated too.
+Below is an example of option 2 'View Past Orders'. You can see the **datetime module** being used here when a user places an order. A **unique random order number** is generated too.
 
-<img alt="Past orders example" src="assets/past_orders_example.png" width="60%"/>
+<p align="center">
+    <img alt="Past orders example" src="assets/past_orders_example.png" width="60%"/>
+</p>
 
 One more thing I've included in this app is **Customer Favourites**.
 - The app keeps track of how many times each item is ordered and it uses this to add them to the top 5 dishes.
 - (If you want to see the code for this, look at the 'get_most_popular_dishes' method in [menu.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/menu.py#L15) .)
 - Below is an example of this. (You can see that these dishes are in the previous example too.)
 
-<img alt="Customer favourites example" src="assets/customer_favourites_example.png" width="60%"/>
+<p align="center">
+    <img alt="Customer favourites example" src="assets/customer_favourites_example.png" width="60%"/>
+</p>
 
 ## Installation & Setup
 
@@ -70,7 +77,7 @@ Run the tests:
 pytest
 ```
 
-Start the app: (I didn't finished the CLI, but did start it, so you can get a basic idea of how things work.)
+Start the app:
 ```bash
 python app.py
 ```
