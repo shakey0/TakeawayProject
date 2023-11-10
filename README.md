@@ -5,10 +5,10 @@ This is a project that I really went nuts on and did so many things with. It was
 
 ## Features
 
-Upon running the app, 50 animals are chosen from the animal list in [list_of_animals.py](list_of_animals.py) . This list of animals along with the [menu.csv](menu.csv) are then parsed to the TakeawayOrderer class upon initialisation (see [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L12)). During the init process for this class, 15 of these animals are then taken and matched with dishes from [menu.csv](menu.csv) according to their first 2 letters or first letter.
+Upon running the app, 50 animals are chosen from the animal list in [list_of_animals.py](list_of_animals.py) . This list of animals along with the [menu.csv](menu.csv) are then parsed to the TakeawayOrderer class upon initialisation (see [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L16-L30)). During the init process for this class, 15 of these animals are then taken and matched with dishes from [menu.csv](menu.csv) according to their first 2 letters or first letter.
 - This ensures that each time the app is run, a new amusing set of animals are matched with dish names.
 - This menu is now used until the running of the app is terminated.
-- (If you want a quick rundown of what the code in [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L16) is doing, copy and paste it into ChatGPT.)
+- (If you want a quick rundown of what the code in [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L16-L63) is doing, copy and paste it into ChatGPT.)
 - Below are 2 examples of different randomly generated menus.
 
 <p align="center">
@@ -20,11 +20,11 @@ Upon running the app, 50 animals are chosen from the animal list in [list_of_ani
 Next, the user enters their details, essentially creating some kind of account.
 - name, address, **allergens**, phone number
 - The **allergens** here are something I spent a lot of time on.
-    - An allergen in this app is any 2 letters of the alphabet together (ox, er, pl, oa, ii) - the customer chooses this.
+    - An allergen in this app is any 2 letters of the alphabet side by side (ox, er, pl, oa, ii, etc.).
     - Customers can choose from 0 to as many allergens as they like.
     - The allergens are stored in a list in the instance of the Customer class.
-    - Each time the menu is printed, any dishes containing the 2 consecutive letters of the allergen will have a warning message next to it.
-    - (If you want to see the code for this, look at the 'add_allergens_to_food_titles' method in [takeaway_orderer.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L94) .)
+    - Each time the menu is printed, any dish containing the 2 consecutive letters of the allergen will have a warning message next to it.
+    - (If you want to see the code to display the warning messages, look at the '[add_allergens_to_food_titles](https://github.com/shakey0/TakeawayProject/blob/main/lib/takeaway_orderer.py#L94-L109)' method in takeaway_orderer.py .)
     - Below is an example of how the allergen warning messages are added.
 
 <p align="center">
@@ -52,8 +52,8 @@ Below is an example of option 2 'View Past Orders'. You can see the **datetime m
 </p>
 
 One more thing I've included in this app is **Customer Favourites**.
-- The app keeps track of how many times each item is ordered and it uses this to add them to the top 5 dishes.
-- (If you want to see the code for this, look at the 'get_most_popular_dishes' method in [menu.py](https://github.com/shakey0/TakeawayProject/blob/main/lib/menu.py#L15) .)
+- The app keeps track of how many times each item is ordered and it uses this to add items to the top 5 dishes.
+- (If you want to see the code for this, look at the '[get_most_popular_dishes](https://github.com/shakey0/TakeawayProject/blob/main/lib/menu.py#L15-L31)' method in menu.py .)
 - Below is an example of this. (You can see that these dishes are in the previous example too.)
 
 <p align="center">
